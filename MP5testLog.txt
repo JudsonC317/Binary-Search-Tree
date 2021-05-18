@@ -1,0 +1,866 @@
+# MP5testLog.txt
+# Judson Cooper
+# MP5
+#
+# This is a test log for MP5. It contains the output of the test script for MP5,
+# as well as commentary on how the output shows the proper functionality of the
+# program.
+#
+# In the test script, many different combinations of settings for the tree are used.
+# Inserts only are testing with optimal, random, and poor trees, and then accesses
+# are added to be tested with these trees as well. These tests all run successfully
+# with no errors, memory leaks, or failures in the asserts or validate functions.
+# Removes are also then tested, which work properly as well.
+#
+# The unit driver 4 is then used to test that the tree works with only one item.
+# This test also attempts to add a duplicate key. The key is successfully replaced,
+# and the single item in the tree deconstructed afterward. The optimal, random, poor,
+# and worst trees are all then tested to ensure these cause no errors. 
+#
+# Finally, the accuracy of both the internal path length and tree stats functions
+# must be tested. These functions are important in calculating the time it takes
+# to search and access the tree, so it is important that these functions work.
+# They are each tested in small steps, first with no items, then one item, then
+# more items are added to the tree to ensure the functions still give the correct
+# output. Their outputs all matched the expected outputs for each case, as seen
+# below.
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 0
+  Levels for tree: 5
+  Build optimal tree with size=31
+       62
+      60
+       58
+     56
+       54
+      52
+       50
+    48
+       46
+      44
+       42
+     40
+       38
+      36
+       34
+   32
+       30
+      28
+       26
+     24
+       22
+      20
+       18
+    16
+       14
+      12
+       10
+      8
+        6
+       4
+        2
+----- End of access driver -----
+
+Seed: 1
+
+----- Access driver -----
+  Access trials: 0
+  Levels for tree: 5
+  Build random tree with size=31
+      62
+        60
+       58
+        56
+     54
+       52
+         50
+          48
+        46
+          44
+         42
+      40
+        38
+       36
+         34
+        32
+    30
+      28
+     26
+        24
+       22
+        20
+          18
+         16
+          14
+      12
+        10
+        8
+         6
+    4
+     2
+----- End of access driver -----
+
+Seed: 1
+
+----- Access driver -----
+  Access trials: 0
+  Levels for tree: 5
+  Build poor tree with size=31
+     62
+      60
+       58
+        56
+         54
+          52
+           50
+    48
+     46
+       44
+         42
+           40
+          38
+        36
+      34
+   32
+     30
+      28
+       26
+        24
+         22
+          20
+           18
+    16
+           14
+          12
+         10
+         8
+        6
+       4
+      2
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 50000
+  Levels for tree: 16
+  Build optimal tree with size=65535
+  After access exercise, time=28.894, tree size=65535
+    Expect successful search=29.0005, measured=28.9929, trials=24907
+    Expect unsuccessful search=32, measured=32, trials=25093
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 50000
+  Levels for tree: 16
+  Build random tree with size=65535
+  After access exercise, time=31.486, tree size=65535
+    Expect successful search=40.4003, measured=40.3991, trials=25106
+    Expect unsuccessful search=43.3996, measured=43.4285, trials=24894
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 50000
+  Levels for tree: 16
+  Build poor tree with size=65535
+  After access exercise, time=61.967, tree size=65535
+    Expect successful search=269.996, measured=269.588, trials=24904
+    Expect unsuccessful search=272.992, measured=273.967, trials=25096
+----- End of access driver -----
+
+Seed: 10212018
+
+
+ ====== Unit Driver ======
+
+Inserting 14 items into tree
+ -- Test (0) tree after adding key 32
+   32
+ -- Test (1) tree after adding key 16
+   32
+    16
+ -- Test (2) tree after adding key 8
+   32
+    16
+      8
+ -- Test (3) tree after adding key 24
+   32
+     24
+    16
+      8
+ -- Test (4) tree after adding key 4
+   32
+     24
+    16
+      8
+       4
+ -- Test (5) tree after adding key 12
+   32
+     24
+    16
+      12
+      8
+       4
+ -- Test (6) tree after adding key 20
+   32
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (7) tree after adding key 28
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (8) tree after adding key 48
+    48
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (9) tree after adding key 40
+    48
+     40
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (10) tree after adding key 56
+     56
+    48
+     40
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (11) tree after adding key 44
+     56
+    48
+      44
+     40
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (12) tree after adding key 42
+     56
+    48
+      44
+       42
+     40
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+ -- Test (13) tree after adding key 46
+     56
+    48
+       46
+      44
+       42
+     40
+   32
+      28
+     24
+      20
+    16
+      12
+      8
+       4
+
+All insertions complete.
+Removing 7 items from tree
+ -- Test (0) about to remove key 12
+     56
+    48
+       46
+      44
+       42
+     40
+   32
+      28
+     24
+      20
+    16
+      8
+       4
+ -- Test (1) about to remove key 20
+     56
+    48
+       46
+      44
+       42
+     40
+   32
+      28
+     24
+    16
+      8
+       4
+ -- Test (2) about to remove key 8
+     56
+    48
+       46
+      44
+       42
+     40
+   32
+      28
+     24
+    16
+      4
+ -- Test (3) about to remove key 24
+     56
+    48
+       46
+      44
+       42
+     40
+   32
+     28
+    16
+      4
+ -- Test (4) about to remove key 40
+     56
+    48
+      46
+     44
+      42
+   32
+     28
+    16
+      4
+ -- Test (5) about to remove key 16
+     56
+    48
+      46
+     44
+      42
+   32
+    28
+      4
+ -- Test (6) about to remove key 48
+    56
+      46
+     44
+      42
+   32
+    28
+      4
+Seed: 2
+
+----- Equilibrium test driver -----
+  Trials in equilibrium: 10
+  Levels in initial tree: 5
+  Initial random tree size=31
+  Expect successful search for initial tree=9.32258
+  Expect unsuccessful search for initial tree=11.9375
+    62
+     60
+   58
+        56
+       54
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+        8
+      6
+        4
+       2
+Trial 0, Key 2 replaced
+    62
+     60
+   58
+        56
+       54
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+        8
+      6
+        4
+       2
+Trial 1, Key 58 replaced
+    62
+     60
+   58
+        56
+       54
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+        8
+      6
+        4
+       2
+Trial 2, Key 53 added
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+        8
+      6
+        4
+       2
+Trial 3, Key 23 added
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+        8
+      6
+        4
+       2
+Trial 4, Key 9 added
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+Trial 5, Key 9 replaced
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+Trial 6, Key 40 replaced
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+Trial 7, Key 41 added
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+           41
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+Trial 8, Key 55 not found
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+        50
+       48
+         46
+        44
+         42
+           41
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+Trial 9, Key 48 removed
+    62
+     60
+   58
+        56
+       54
+        53
+      52
+       50
+         46
+        44
+         42
+           41
+          40
+     38
+        36
+         34
+       32
+          30
+         28
+        26
+         24
+          23
+      22
+        20
+       18
+         16
+        14
+    12
+      10
+         9
+        8
+      6
+        4
+       2
+  After exercise, time=0.172, new tree size=34
+  successful searches during exercise=8.6, trials=5
+  unsuccessful searches during exercise=12.4, trials=5
+  Validating tree...passed
+  After access experiment, time=0.002, tree size=34
+  Expect successful search=9.76471, measured=11.5, trials=4
+  Expect unsuccessful search=12.4, measured=13, trials=6
+----- End of equilibrium test -----
+
+Seed: 10212018
+
+----- Equilibrium test driver -----
+  Trials in equilibrium: 100000
+  Levels in initial tree: 20
+  Initial random tree size=1048575
+  Expect successful search for initial tree=51.7207
+  Expect unsuccessful search for initial tree=54.7207
+  After exercise, time=176.625, new tree size=1048638
+  successful searches during exercise=51.7232, trials=50056
+  unsuccessful searches during exercise=54.6385, trials=49944
+  Validating tree...passed
+  After access experiment, time=157.126, tree size=1048638
+  Expect successful search=51.7094, measured=51.6772, trials=49988
+  Expect unsuccessful search=54.7094, measured=54.5007, trials=50012
+----- End of equilibrium test -----
+
+Seed: 10212018
+
+
+ ====== Unit Driver ======
+
+Inserting 2 items into tree
+ -- Test (0) tree after adding key 10
+   10
+ -- Test (1) tree after adding key 10
+   10
+
+All insertions complete.
+Removing 1 items from tree
+ -- Test (0) about to remove key 10
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 100000
+  Levels for tree: 16
+  Build optimal tree with size=65535
+  After access exercise, time=62.347, tree size=65535
+    Expect successful search=29.0005, measured=29.01, trials=49953
+    Expect unsuccessful search=32, measured=32, trials=50047
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 100000
+  Levels for tree: 16
+  Build random tree with size=65535
+  After access exercise, time=63.709, tree size=65535
+    Expect successful search=40.4003, measured=40.4026, trials=50204
+    Expect unsuccessful search=43.3996, measured=43.4257, trials=49796
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 100000
+  Levels for tree: 16
+  Build poor tree with size=65535
+  After access exercise, time=104.34, tree size=65535
+    Expect successful search=269.996, measured=269.69, trials=49945
+    Expect unsuccessful search=272.992, measured=273.876, trials=50055
+----- End of access driver -----
+
+Seed: 10212018
+
+----- Access driver -----
+  Access trials: 100000
+  Levels for tree: 16
+  Build worst tree with size=4180
+  After access exercise, time=18.653, tree size=4180
+    Expect successful search=22.067, measured=22.0738, trials=49952
+    Expect unsuccessful search=25.061, measured=25.0485, trials=50048
+----- End of access driver -----
+
+Seed: 10212018
+Path length with no entries: 0 Expected: 0
+Path length with one entry: 0 Expected: 0
+Path length with three entries: 2 Expected: 2
+Path length with four entries: 4 Expected: 4
+Path length with five entries: 6 Expected: 6
+Path length with six entries: 9 Expected: 9
+Seed: 10212018
+Key comparisons for first insert: 0 Expected: 0
+Key comparisons for first access: 1 Expected: 1
+Key comparisons for second insert: 2 Expected: 2
+Key comparisons for second access: 3 Expected: 3
+Key comparisons for first remove: 3 Expected: 3
+Key comparisons for second remove: 1 Expected: 1
+
+ 
+ 
+  
